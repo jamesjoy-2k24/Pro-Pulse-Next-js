@@ -1,10 +1,14 @@
-import Layout from '../components/Layout';
+import type { NextPage } from 'next';
+import Navbar from '../components/Navbar';
 
-const Home = () => {
+const Home: NextPage = () => {
   return (
-    <Layout>
-      <h1 className="text-3xl font-bold">Welcome to Pro-Pulse</h1>
-    </Layout>
+    <div>
+      <Navbar />
+      <main>
+        <h1>App</h1>
+      </main>
+    </div>
   );
 };
 
