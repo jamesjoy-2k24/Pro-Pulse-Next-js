@@ -34,7 +34,8 @@
     "server.ts",
     "pages/**/*",
     "components/**/*",
-    "lib/**/*"
+    "lib/**/*",
+    "context/MyContext.ts"
   ],
   "exclude": ["node_modules"]
 }
