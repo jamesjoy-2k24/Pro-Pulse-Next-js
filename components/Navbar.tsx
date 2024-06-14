@@ -1,60 +1,121 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div className="text-2xl font-bold">ProPulse</div>
-          </div>
-          <div className="hidden md:flex space-x-4">
-            <a
-              href="#"
-              className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-            </a>
-          </div>
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
-            >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+    <>
+      {/* Top Navbar */}
+      <div
+        className={`fixed w-full bg-gray-800 text-white transition-transform duration-300 ease-in-out ${
+          isScrolled ? '-translate-y-16' : 'translate-y-0'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-2xl font-bold">Pro-Pulse</div>
+            <div className="hidden md:flex space-x-4">
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                About
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Services
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Contact
+              </a>
+            </div>
+            <div className="md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
+              >
+                {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Fixed Navbar */}
+      <div className="fixed top-0 w-full bg-gradient-to-r from-black to-gray-800 text-white z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-2xl font-bold">Pro Pulse</div>
+            <div className="hidden md:flex space-x-4">
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                About
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Services
+              </a>
+              <a
+                href="#"
+                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Contact
+              </a>
+            </div>
+            <div className="md:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
+              >
+                {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden bg-gray-800 text-white">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
               href="#"
@@ -83,7 +144,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 
