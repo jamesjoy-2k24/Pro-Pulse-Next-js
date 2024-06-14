@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import Logo from '../public/logo.png';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +33,10 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="text-2xl font-bold">Pro-Pulse</div>
+            <div className="text-2xl font-bold">
+              <Image src={Logo} alt="Logo" width={40} height={40} />
+              {/* <div>Pro-Pulse</div> */}
+            </div>
             <div className="hidden md:flex space-x-4">
               <a
                 href="#"
@@ -74,7 +79,10 @@ const Navbar = () => {
       <div className="fixed top-0 w-full bg-gradient-to-r from-black to-gray-800 text-white z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="text-2xl font-bold">Pro Pulse</div>
+            <div className="text-2xl font-bold flex items-center gap-3">
+              <Image src={Logo} alt="Logo" width={40} height={40} />
+              <div>Pro-Pulse</div>
+            </div>
             <div className="hidden md:flex space-x-4">
               <a
                 href="#"

@@ -1,10 +1,12 @@
+import Navbar from '@/components/Navbar';
 import Layout from '../components/Layout';
+import HeroSection from '@/components/HeroSection';
 
 const Home = () => {
   return (
     <Layout>
-      <h1 className="text-3xl font-bold">Welcome to Pro-Pulse</h1>
-      <p className="text-lg">Revolutionize the find for sports player</p>
+      <Navbar />
+      <HeroSection />
     </Layout>
   );
 };
