@@ -1,4 +1,5 @@
 'use client';
+import { motion } from 'framer-motion';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,8 +32,17 @@ const ContactUs = () => {
       console.log(result);
     }
   }
+
   return (
     <section className="py-12 bg-gray-900">
+      <motion.h2
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-3xl text-white font-bold text-center mb-6"
+      >
+        Contact Us
+      </motion.h2>
       <ToastContainer />
       <div className="my-6">
         <div className="grid md:grid-cols-2 items-center gap-16 p-8 mx-auto max-w-6xl bg-white shadow-md shadow-purple-500  rounded-md text-[#333] ">
@@ -155,12 +165,13 @@ const ContactUs = () => {
               required
               className="w-full rounded-md px-4 border text-md pt-2.5 outline-[#007bff]"
             ></textarea>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
               type="submit"
-              className="text-white bg-red-700 hover:bg-red-600 font-semibold rounded-md text-md px-4 py-2.5 w-full"
+              className="text-white bg-red-700 hover:bg-red-600 font-semibold rounded-md text-md px-4 py-2.5 w-full "
             >
-              Send
-            </button>
+              Send Message
+            </motion.button>
           </form>
         </div>
       </div>
