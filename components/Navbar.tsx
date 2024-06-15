@@ -1,72 +1,91 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
+import { FaBars, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logo from '../public/logo.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollPos = window.pageYOffset;
+      setIsScrolled(currentScrollPos > 50);
+      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      setPrevScrollPos(currentScrollPos);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [prevScrollPos]);
 
   return (
     <>
-      {/* Top Navbar */}
+      {/* First Navbar */}
       <div
-        className={`fixed w-full bg-gray-800 text-white transition-transform duration-300 ease-in-out ${
-          isScrolled ? '-translate-y-16' : 'translate-y-0'
+        className={`fixed w-full bg-black text-gray-300 hover:text-white transition-transform duration-300 ease-in-out z-20 ${
+          visible ? 'translate-y-0' : '-translate-y-16'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="text-2xl font-bold">
-              <Image src={Logo} alt="Logo" width={40} height={40} />
-              {/* <div>Pro-Pulse</div> */}
+            <div className="flex items-center gap-3">
+              <Image src={Logo} alt="Logo" width={30} height={30} />
+              <div className="text-2xl font-extrabold">Pro-Pulse</div>
             </div>
-            <div className="hidden md:flex space-x-4">
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Services
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Contact
-              </a>
+            <div className="hidden md:flex">
+              <div className="relative group">
+                <div
+                  className="flex items-center cursor-pointer gap-4 "
+                  onClick={toggleMenu}
+                >
+                  <Link href={''} className="text-md font-extrabold">
+                    Login
+                  </Link>
+                  {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+                </div>
+                {isOpen && (
+                  <div
+                    ref={menuRef}
+                    className="absolute left-0 mt-3 w-40 bg-black text-white rounded-lg shadow-lg opacity-100 duration-300 transition-all"
+                  >
+                    <Link
+                      href={''}
+                      className="block px-4 py-2 hover:bg-gray-900 duration-300 transition-all text-sm font-bold"
+                      onClick={closeMenu}
+                    >
+                      As Sports Player
+                    </Link>
+                    <Link
+                      href={''}
+                      className="block px-4 py-2 hover:bg-gray-900 duration-300 transition-all text-sm font-bold"
+                      onClick={closeMenu}
+                    >
+                      As Sponsor
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="md:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
+                className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
               >
                 {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
               </button>
@@ -75,44 +94,55 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Fixed Navbar */}
-      <div className="fixed top-0 w-full bg-gradient-to-r from-black to-gray-800 text-white z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Second Navbar (Fixed on Scroll) */}
+      <div
+        className={`fixed top-0 w-full bg-black text-gray-300 z-10 shadow-lg transition-transform duration-300 ease-in-out ${
+          isScrolled ? 'translate-y-0' : '-translate-y-16'
+        }`}
+      >
+        <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="text-2xl font-bold flex items-center gap-3">
-              <Image src={Logo} alt="Logo" width={40} height={40} />
-              <div>Pro-Pulse</div>
+            <div className="flex items-center gap-3">
+              <Image src={Logo} alt="Logo" width={30} height={30} />
+              <div className="text-2xl font-extrabold">Pro-Pulse</div>
             </div>
-            <div className="hidden md:flex space-x-4">
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+            <div className="hidden md:flex items-center gap-4">
+              <Link
+                href={''}
+                className="hover:text-white px-3 py-2 text-md font-extrabold"
               >
                 Home
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              </Link>
+              <Link
+                href={''}
+                className="hover:text-white px-3 py-2 text-md font-extrabold"
               >
                 About
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              </Link>
+              <Link
+                href={''}
+                className="hover:text-white px-3 py-2 text-md font-extrabold"
               >
                 Services
-              </a>
-              <a
-                href="#"
-                className="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+              </Link>
+              <Link
+                href={''}
+                className="hover:text-white px-3 py-2 text-md font-extrabold"
               >
                 Contact
-              </a>
+              </Link>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="bg-gray-700 text-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white"
+                />
+              </div>
             </div>
             <div className="md:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-gray-400 hover:text-white focus:outline-none focus:text-white"
+                className="text-gray-300 hover:text-white focus:outline-none focus:text-white"
               >
                 {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
               </button>
@@ -123,32 +153,43 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-gray-800 text-white">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#"
-              className="hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
+        <div className="md:hidden bg-black text-gray-300 transition-transform duration-300 transform translate-y-0">
+          <div className="px-2 pt-16 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+            <Link
+              href={''}
+              className="hover:text-white block px-3 py-2 text-base font-extrabold"
+              onClick={closeMenu}
             >
               Home
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
+            </Link>
+            <Link
+              href={''}
+              className="hover:text-white block px-3 py-2 text-base font-extrabold"
+              onClick={closeMenu}
             >
               About
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
+            </Link>
+            <Link
+              href={''}
+              className="hover:text-white block px-3 py-2 text-base font-extrabold"
+              onClick={closeMenu}
             >
               Services
-            </a>
-            <a
-              href="#"
-              className="hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
+            </Link>
+            <Link
+              href={''}
+              className="hover:text-white block px-3 py-2 text-base font-extrabold"
+              onClick={closeMenu}
             >
               Contact
-            </a>
+            </Link>
+            <div className="relative px-3 py-2">
+              <input
+                type="text"
+                placeholder="Search"
+                className="w-full bg-gray-700 text-white rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white text-center"
+              />
+            </div>
           </div>
         </div>
       )}
