@@ -26,7 +26,7 @@ const HeroSection = () => {
                   transition={{ duration: 1, delay: 0.5 }}
                   className="text-3xl sm:text-4xl md:text-5xl text-center lg:text-left lg:text-6xl text-white font-bold leading-tight md:leading-normal"
                 >
-                  Revolutionize Sports Player with{' '}
+                  Revolutionize Your Sports Experience with{' '}
                   <span className="text-red-600 font-bold">Pro-pulse</span>
                 </motion.h1>
                 <motion.p
@@ -35,10 +35,11 @@ const HeroSection = () => {
                   transition={{ duration: 1, delay: 1 }}
                   className="text-white mt-6 md:mt-8 lg:mt-10 text-sm md:text-xl text-center lg:text-left"
                 >
-                  PRO PULSE is a web app that allows you to hire eligible &
-                  verified sports players anytime, from anywhere you can access.
-                  A simple and effective way to search and find your desired
-                  player.
+                  Pro-Pulse is the ultimate platform designed to connect you
+                  with top-tier, verified sports players from around the globe.
+                  Whether you&apos;re a coach, a team manager, or a sponsor, our
+                  web app offers a seamless, efficient, and effective way to
+                  find and hire the best athletes, anytime and anywhere.
                 </motion.p>
                 <Link href={''}>
                   <motion.button
