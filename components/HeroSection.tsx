@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { FaFacebook, FaInstagram, FaTwitter, FaTiktok } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
@@ -43,10 +44,23 @@ const HeroSection = () => {
                   <motion.button
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 1.5 }}
-                    className="mt-6 md:mt-8 lg:mt-10 px-6 py-3 justify-center flex mx-auto bg-red-700 text-white font-semibold rounded-lg hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
+                    transition={{ duration: 1, delay: 1 }}
+                    className="mt-6 md:mt-8 lg:mt-10 px-6 py-3 justify-center flex  bg-red-700 text-white font-semibold rounded-lg hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50"
                   >
                     Get Started
+                  </motion.button>
+                </Link>
+                <Link href={''}>
+                  <motion.button
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 1 }}
+                    className="mt-6 md:mt-8 lg:mt-10  items-center justify-center flex  gap-5"
+                  >
+                    <FaFacebook className="text-3xl text-white shadow-lg shadow-green-700  rounded-full" />
+                    <FaInstagram className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1 rounded-full" />
+                    <FaTwitter className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1  rounded-full" />
+                    <FaTiktok className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1 rounded-full" />
                   </motion.button>
                 </Link>
               </div>
