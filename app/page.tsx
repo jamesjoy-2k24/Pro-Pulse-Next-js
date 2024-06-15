@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Layout from '../components/Layout';
 import HeroSection from '@/pages/HeroSection';
 import AboutUs from '@/pages/About';
+import FeaturedPlayers from '@/pages/FeaturedPlayers';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutUs />
+      <FeaturedPlayers />
     </Layout>
   );
 };

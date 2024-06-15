@@ -6,21 +6,21 @@ const AboutUs = () => {
   return (
     <section className="py-12 bg-gray-900">
       <div className="container mx-auto px-4">
-        <motion.h2
+        <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className="text-1xl font-bold text-center mb-6"
         >
-          <h1 className="font-bold text-center ">
+          <p className="font-bold text-center ">
             <span className="relative inline-block">
               <span className="inline-block text-[3rem] text-white p-1 relative z-10">
                 About Us!
               </span>
               <span className="rounded-[10px] absolute inset-0 bg-red-700 z-0 transform -skew-x-3 -skew-y-3"></span>
             </span>
-          </h1>
-        </motion.h2>
+          </p>
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

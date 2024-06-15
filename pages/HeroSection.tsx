@@ -58,10 +58,10 @@ const HeroSection = () => {
                     transition={{ duration: 1, delay: 1 }}
                     className="mt-6 md:mt-8 lg:mt-10  items-center justify-center flex  gap-5"
                   >
-                    <FaFacebook className="text-3xl text-white shadow-lg shadow-green-700  rounded-full" />
-                    <FaInstagram className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1 rounded-full" />
-                    <FaTwitter className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1  rounded-full" />
-                    <FaTiktok className="text-3xl text-black bg-white shadow-lg shadow-green-700 p-1 rounded-full" />
+                    <FaFacebook className="text-3xl text-white shadow-md shadow-purple-500  rounded-full" />
+                    <FaInstagram className="text-3xl text-black bg-white shadow-md shadow-purple-500 p-1 rounded-full" />
+                    <FaTwitter className="text-3xl text-black bg-white shadow-md shadow-purple-500 p-1  rounded-full" />
+                    <FaTiktok className="text-3xl text-black bg-white shadow-md shadow-purple-500 p-1 rounded-full" />
                   </motion.button>
                 </Link>
               </div>
