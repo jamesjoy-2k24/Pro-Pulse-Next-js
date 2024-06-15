@@ -37,7 +37,7 @@ const AboutUs = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 "
+          className="flex flex-wrap justify-center lg:grid-cols-4 gap-8"
         >
           <div className="text-center shadow-md hover:bg-white hover:text-black duration-300 transition-all text-white bg-black p-3 shadow-purple-500 border-none rounded-2xl w-[330px] h-[330px] flex flex-col justify-center">
             <FaCheckCircle className="text-8xl text-red-900 mx-auto mb-4 shadow-lg shadow-gray-500 rounded-full py-4 border-none bg-white" />
