@@ -89,7 +89,7 @@ const News = () => {
           <div className="text-center mt-6">
             <button
               onClick={loadMoreNews}
-              className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+              className="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-700"
             >
               Load more
             </button>
