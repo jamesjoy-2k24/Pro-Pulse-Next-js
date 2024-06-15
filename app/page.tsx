@@ -5,6 +5,7 @@ import AboutUs from '@/pages/About';
 import FeaturedPlayers from '@/pages/FeaturedPlayers';
 import Faq from '@/pages/faq';
 import News from '@/pages/News';
+import ContactUs from '@/pages/Contact';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <FeaturedPlayers />
       <Faq />
       <News />
+      <ContactUs />
     </Layout>
   );
 };
