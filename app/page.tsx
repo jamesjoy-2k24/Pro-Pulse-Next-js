@@ -7,6 +7,7 @@ import Faq from '@/pages/faq';
 import News from '@/pages/News';
 import ContactUs from '@/pages/Contact';
 import CTA from '@/pages/Cta';
+import Footer from '@/components/Footer';
 
 const Home = () => {
   return (
@@ -15,10 +16,11 @@ const Home = () => {
       <HeroSection />
       <AboutUs />
       <FeaturedPlayers />
-      <Faq />
       <News />
       <ContactUs />
+      <Faq />
       <CTA />
+      <Footer />
     </Layout>
   );
 };
