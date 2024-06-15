@@ -6,6 +6,7 @@ import FeaturedPlayers from '@/pages/FeaturedPlayers';
 import Faq from '@/pages/faq';
 import News from '@/pages/News';
 import ContactUs from '@/pages/Contact';
+import CTA from '@/pages/Cta';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Faq />
       <News />
       <ContactUs />
+      <CTA />
     </Layout>
   );
 };
