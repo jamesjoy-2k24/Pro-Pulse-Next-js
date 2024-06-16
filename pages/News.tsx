@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -73,7 +74,7 @@ const News = () => {
                   {article.description}
                 </p>
               </div>
-              <a
+              <Link
                 href={article.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,7 +82,7 @@ const News = () => {
               >
                 <span className="ml-2">👉</span>
                 <span>Read more</span>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

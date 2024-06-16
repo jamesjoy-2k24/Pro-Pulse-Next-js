@@ -126,13 +126,12 @@ const Footer = () => {
               className="flex gap-4 justify-center md:justify-start mb-4"
             >
               {socialLinks.map((link, index) => (
-                <Link href={link.path} key={index} legacyBehavior>
-                  <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-900 hover:bg-primaryColor transition duration-300"
-                  >
-                    {link.icon}
-                  </motion.a>
+                <Link
+                  href={link.path}
+                  key={index}
+                  className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-gray-900 hover:bg-primaryColor transition duration-300"
+                >
+                  {link.icon}
                 </Link>
               ))}
             </motion.div>

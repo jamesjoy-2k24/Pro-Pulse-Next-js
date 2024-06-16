@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import PlayerCard from '../components/Card';
+import PlayerCard from '../components/Common/Card';
 
 const dummyPlayers = [
   {

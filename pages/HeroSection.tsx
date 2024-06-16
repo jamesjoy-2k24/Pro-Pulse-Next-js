@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <div
       className="bg-cover bg-bottom h-screen relative"
-      style={{ backgroundImage: 'url(/Hero.jpeg)' }}
+      style={{ backgroundImage: 'url(/images/Hero.jpeg)' }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-10">
         <section className="h-full flex items-center">
